@@ -1,0 +1,14 @@
+const mimeType = require('mime-types');
+	const bufferdata = await getBuffer(link);
+
+	const { default: fileType } = await import('file-type');
+	const type = await fileType.fromBuffer(bufferdata);
+	const mime = type ? type.mime : 'video/mp4';
+	let ext = mimeType.extension(mime);
+
+await conn.sendMessage(chat, {
+		document: bufferdata,
+		mimetype: mime,
+		fileName: title + '.' + ext,
+		caption: caption
+	});
